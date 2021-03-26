@@ -112,10 +112,6 @@ console.log('Hello from the new object function', newObject(['hi', 'hello', 'are
 // };
 
 // // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log('Let\'s do some math:', add(4, 5));
-// const addOneLiner = (num1, num2) => `${num1} + ${num2} = ${num1 + num2}`;
-
-
 
 let sum = function(a, b, c, d) {
   return a + b + c + d;
@@ -123,13 +119,12 @@ let sum = function(a, b, c, d) {
 
 // Step 10 single line solution
 let totalOneLiner = (a, b, c, d) => `${a} + ${b} + ${c} +${d} = ${a + b + c + d}`;
-// let totalOneliner = (a, b, c, d) => `${a} + ${b} + ${c} +${d} = ${a + b + c +d}`;
+let qtotalOneLiner = (a, b, c, d) => `${a} + ${b} + ${c} +${d} = ${a + b + c +d}`;
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log(sum(1, 2, 3, 4))
-console.log(totalOneLiner(1, 2, 3, 4))
-// console.log(totalOneLiner(1, 2, 3, 4)) (not sure why lines 125 and 129 are not working)
-
+console.log('Line 125', sum(1, 2, 3, 4));
+console.log(qtotalOneLiner(1, 2, 3, 4));
+console.log(totalOneLiner(1, 2, 3, 4));
 
 let objectLit = function() {
   return {
@@ -140,16 +135,16 @@ let objectLit = function() {
 };
 
 // refactored object literal
-let newObjectLit = array => ({
+let newObjectLit = () => ({
   key1: 'value1',
   key2: 'value2',
   key3: 'value3'
-})
+});
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(objectLit());
 // newObjectLit wouldn't work unless I added 'array' as a parameter.
-console.log(newObjectLit());
+console.log('Line 147', newObjectLit());
 
 
 
@@ -233,22 +228,22 @@ console.log(Student.courseName());
 // STEP 11
 // How do arrow functions affect constructor functions?
 Student.prototype.scope = function() {
-  console.log(this);
+  console.log('Line 231', this);
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(joe.scope());
 
-Student.prototype.scopeArrow = () => console.log(this);
+Student.prototype.scopeArrow = () => console.log('Line 237', this);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-console.log(joe.scopeArrow());
+console.log('Line 240', joe.scopeArrow());
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-// This refers to joe's name, age and hometown
+// This refers to joe's name, age and hometown-locally scoped to joe.
 // 2. What is "this" when joe.scopeArrow() is invoked?
-// it is undefined
+// it is undefined - when using an arrow function 'this' is globally scoped and is not contained in the function, standard or old functions 'this' is locally scoped.
 // 3. Explain why "this" is different when an arrow function is used.
 // Honestly i'm not making the connection...but according to the assignment it seems that 'this' is not reset within arrow functions
 
